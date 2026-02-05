@@ -1,0 +1,20 @@
+function doGet(e) { 
+  // 1. Get the active sheet
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+  // 2. Read the data sent from the Pico
+  // Note: These names (temp, hum, pres) must match your Python code exactly!
+  var temp = e.parameter.temp;
+  var hum = e.parameter.hum;
+  var pres = e.parameter.pres;
+
+  // 3. Get the current date and time
+  var date = new Date();
+
+  // 4. Save to the sheet
+  // Order: Date | Temp | Humidity | Pressure
+  sheet.appendRow([date, temp, hum, pres]);
+
+  // 5. Send a "Success" message back to the Pico
+  return ContentService.createTextOutput("Success");
+}
