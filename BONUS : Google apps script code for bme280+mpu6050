@@ -1,0 +1,24 @@
+function doGet(e) { 
+  // 1. Get the Spreadsheet and the active sheet
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  
+  // 2. Parse the incoming parameters from the Pico
+  // If a parameter is missing, we save "0" or "N/A" to avoid errors
+  var temp = e.parameter.temp || 0;
+  var hum = e.parameter.hum || 0;
+  var pres = e.parameter.pres || 0;
+  var ax = e.parameter.ax || 0;
+  var ay = e.parameter.ay || 0;
+  var az = e.parameter.az || 0;
+  
+  // 3. Create a timestamp
+  var timestamp = new Date();
+  
+  // 4. Append the data as a new row
+  // The order here MUST match your headers in Step 1
+  sheet.appendRow([timestamp, temp, hum, pres, ax, ay, az]);
+  
+  // 5. Send a confirmation back to the Pico
+  // This is the "Text" your Python code prints after uploading
+  return ContentService.createTextOutput("Success");
+}
