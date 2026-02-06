@@ -5,20 +5,20 @@ import socket
 import ssd1306
 import bme280
 import urequests
-import gc  # <--- CRITICAL: Garbage Collector for memory management
+import gc  
 from imu import MPU6050
 
 # --- 1. CONFIGURATION ---
 # PASTE YOUR GOOGLE APP SCRIPT URL INSIDE THE QUOTES BELOW:
-GOOGLE_URL = "https://script.google.com/macros/s/AKfycbzaZW_b3WX249Qbwt_kyEbmts5AgWMleo9iBamzAQZGWaanWHcXEJaBP3_kn8ZVXLM0_w/exec" 
+GOOGLE_URL = "" 
 
 LOG_INTERVAL = 15000  # Upload to Google every 15 seconds
 TEMP_LIMIT = 30.0    
 HUM_LIMIT = 60.0     
 PRES_LIMIT = 1000.0 
 
-wifi_ssid = "Nafh"
-wifi_password = "1234567809"
+wifi_ssid = ""
+wifi_password = ""
 
 # --- 2. HARDWARE INITIALIZATION ---
 i2c = I2C(1, sda=Pin(2), scl=Pin(3), freq=400000) 
